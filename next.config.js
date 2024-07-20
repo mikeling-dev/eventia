@@ -1,9 +1,10 @@
 // @ts-check
-const { withBlitz } = require("@blitzjs/next")
+const { withBlitz } = require("@blitzjs/next");
+// next.config.js blitz:{ resolverPath: "root", },
 
 /**
  * @type {import('@blitzjs/next').BlitzConfig}
  **/
-const config = {}
+const config = {};
 
-module.exports = withBlitz(config)
+module.exports = withBlitz(config);
