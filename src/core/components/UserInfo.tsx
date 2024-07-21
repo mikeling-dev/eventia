@@ -7,18 +7,10 @@ import Link from "next/link";
 
 export default function UserInfo() {
   const currentUser = useCurrentUser();
-  const [logoutMutation] = useMutation(logout);
 
   if (currentUser) {
     return (
       <>
-        <Button
-          onClick={async () => {
-            await logoutMutation();
-          }}
-        >
-          Logout
-        </Button>
         <div>
           User id: <code>{currentUser.id}</code>
           <br />
@@ -29,12 +21,12 @@ export default function UserInfo() {
   } else {
     return (
       <>
-        <Link href={Routes.SignupPage()}>
-          <strong>Sign Up</strong>
-        </Link>
-        <Link href={Routes.LoginPage()}>
-          <strong>Login</strong>
-        </Link>
+        <Button component={Link} href={Routes.SignupPage()}>
+          Sign Up
+        </Button>
+        <Button component={Link} href={Routes.LoginPage()}>
+          Login
+        </Button>
       </>
     );
   }

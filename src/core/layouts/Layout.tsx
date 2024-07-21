@@ -2,7 +2,10 @@ import Head from "next/head";
 import React, { FC, Suspense } from "react";
 import { BlitzLayout } from "@blitzjs/next";
 import { Horizontal, Vertical } from "mantine-layout-components";
-import { AppShell, Footer, Header, Navbar, Text } from "@mantine/core";
+import { AppShell, Button, Footer, Header, Navbar, Text } from "@mantine/core";
+import { useMutation } from "@blitzjs/rpc";
+import logout from "@/features/auth/mutations/logout";
+import { useCurrentUser } from "@/features/users/hooks/useCurrentUser";
 
 type Props = {
   title?: string;
@@ -12,6 +15,9 @@ type Props = {
 
 const Layout: BlitzLayout<Props> = ({ title, maxWidth = 800, children }) => {
   const thisYear = new Date().getFullYear();
+  const [logoutMutation] = useMutation(logout);
+  const currentUser = useCurrentUser();
+
   return (
     <>
       <Head>
@@ -20,11 +26,21 @@ const Layout: BlitzLayout<Props> = ({ title, maxWidth = 800, children }) => {
       </Head>
       <AppShell
         padding="md"
-        // navbar={
-        //   <Navbar width={{ base: 300 }} height="100%" p="xs">
-        //     {/* Navbar content */}
-        //   </Navbar>
-        // }
+        navbar={
+          currentUser ? (
+            <Navbar width={{ base: 250 }} height="100%" p="xs">
+              <Button
+                onClick={async () => {
+                  await logoutMutation();
+                }}
+              >
+                Logout
+              </Button>
+            </Navbar>
+          ) : (
+            <Navbar display="none"> </Navbar>
+          )
+        }
         header={
           <Header height={50} p="xs">
             <Horizontal fullH>
