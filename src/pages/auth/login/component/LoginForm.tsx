@@ -60,7 +60,7 @@ export const LoginForm = (props: LoginFormProps) => {
           placeholder="password"
           {...form.getInputProps("password")}
         />
-        <Button type="submit">Submit</Button>
+        <Button type="submit">Login</Button>
       </form>
       <Link href={Routes.ForgotPasswordPage()}>Forgot your password?</Link>
       Or <Link href={Routes.SignupPage()}>Sign Up</Link>

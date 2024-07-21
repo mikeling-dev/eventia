@@ -50,7 +50,7 @@ const ForgotPasswordPage: BlitzPage = () => {
             placeholder="your@email.com"
             {...form.getInputProps("email")}
           />
-          <Button type="submit">Submit</Button>
+          <Button type="submit">Reset Password</Button>
         </form>
       )}
     </Layout>

@@ -62,7 +62,7 @@ export const SignupForm = (props: SignupFormProps) => {
           placeholder="password"
           {...form.getInputProps("password")}
         />
-        <Button type="submit">Submit</Button>
+        <Button type="submit">Sign Up</Button>
       </form>
     </Vertical>
   );
