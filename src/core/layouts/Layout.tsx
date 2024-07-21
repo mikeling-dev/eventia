@@ -27,24 +27,10 @@ const Layout: BlitzLayout<Props> = ({ title, maxWidth = 800, children }) => {
       </Head>
       <AppShell
         padding="md"
-        navbar={
-          currentUser ? (
-            <Navbar width={{ base: 250 }} height="100%" p="xs">
-              <Button
-                onClick={async () => {
-                  await logoutMutation();
-                }}
-              >
-                Logout
-              </Button>
-            </Navbar>
-          ) : (
-            <Navbar display="none"> </Navbar>
-          )
-        }
+        // navbar={<Navbar width={{ base: 250 }} height="100%" p="xs"></Navbar>}
         header={
-          <Header height={50} p="xs">
-            <Horizontal fullH>
+          <Header height={55} p="xs">
+            <Horizontal fullH spaceBetween>
               <Anchor
                 component={Link}
                 href={Routes.Home()}
@@ -54,6 +40,18 @@ const Layout: BlitzLayout<Props> = ({ title, maxWidth = 800, children }) => {
               >
                 Eventia
               </Anchor>
+
+              {currentUser && (
+                <Button
+                  size="xs"
+                  variant="light"
+                  onClick={async () => {
+                    await logoutMutation();
+                  }}
+                >
+                  Logout
+                </Button>
+              )}
             </Horizontal>
           </Header>
         }
