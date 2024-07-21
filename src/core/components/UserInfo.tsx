@@ -7,27 +7,13 @@ import Link from "next/link";
 
 export default function UserInfo() {
   const currentUser = useCurrentUser();
-
-  if (currentUser) {
-    return (
-      <>
-        <div>
-          User id: <code>{currentUser.id}</code>
-          <br />
-          User role: <code>{currentUser.role}</code>
-        </div>
-      </>
-    );
-  } else {
-    return (
-      <>
-        <Button component={Link} href={Routes.SignupPage()}>
-          Sign Up
-        </Button>
-        <Button component={Link} href={Routes.LoginPage()}>
-          Login
-        </Button>
-      </>
-    );
-  }
+  return (
+    <>
+      <div>
+        User id: <code>{currentUser?.id}</code>
+        <br />
+        User role: <code>{currentUser?.role}</code>
+      </div>
+    </>
+  );
 }

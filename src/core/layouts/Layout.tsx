@@ -1,11 +1,12 @@
 import Head from "next/head";
 import React, { FC, Suspense } from "react";
-import { BlitzLayout } from "@blitzjs/next";
+import { BlitzLayout, Routes } from "@blitzjs/next";
 import { Horizontal, Vertical } from "mantine-layout-components";
-import { AppShell, Button, Footer, Header, Navbar, Text } from "@mantine/core";
+import { Anchor, AppShell, Button, Footer, Header, Navbar, Text } from "@mantine/core";
 import { useMutation } from "@blitzjs/rpc";
 import logout from "@/features/auth/mutations/logout";
 import { useCurrentUser } from "@/features/users/hooks/useCurrentUser";
+import Link from "next/link";
 
 type Props = {
   title?: string;
@@ -44,7 +45,15 @@ const Layout: BlitzLayout<Props> = ({ title, maxWidth = 800, children }) => {
         header={
           <Header height={50} p="xs">
             <Horizontal fullH>
-              <Text fw="bold">Eventia</Text>
+              <Anchor
+                component={Link}
+                href={Routes.Home()}
+                underline={false}
+                color="gray.3"
+                fw="bold"
+              >
+                Eventia
+              </Anchor>
             </Horizontal>
           </Header>
         }
